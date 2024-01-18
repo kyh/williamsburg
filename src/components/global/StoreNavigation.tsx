@@ -1,13 +1,15 @@
-import Image from "next/image";
+"use client"
+
 import { useState } from "react"
 
 export const StoreNavigation = () => {
-  const [open, setOpen] = useState(false);
+  const [openAccount, setOpenAccount] = useState(false);
+  const [openNav, setOpenNav] = useState(false);
+  
   return (
     <div className="2xl:max-w-7xl 2xl:mx-auto">
       <div className="w-full bg-black md:max-w-sm text-xs z-50 fixed right-0">
         <nav
-          x-data="{ open: false }"
           className="relative flex flex-col w-full mx-auto items-center justify-between"
         >
           <div className="inline-flex w-full items-center justify-between p-3 bg-black">
@@ -19,7 +21,10 @@ export const StoreNavigation = () => {
             </a>
             <button
               className="inline-flex items-center justify-end text-white hover:text-orange-400 focus:outline-none focus:text-white"
-              onClick={() => setOpen(prev => !prev)}
+              onClick={() => {
+                setOpenNav(prev => !prev)
+                setOpenAccount(false)
+              }}
             >
               <svg
                 className="w-5 h-5"
@@ -28,13 +33,13 @@ export const StoreNavigation = () => {
                 viewBox="0 0 24 24"
               >
                 <path
-                  className={open ? "hidden" : "inline-flex"}
+                  className={openNav ? "hidden" : "inline-flex"}
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="1.5"
                   d="M4 6h16M4 12h16M4 18h16"></path>
                 <path
-                  className={open ? "inline-flex" : "hidden"}
+                  className={openNav ? "inline-flex" : "hidden"}
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="1.5"
@@ -42,17 +47,16 @@ export const StoreNavigation = () => {
               </svg>
             </button>
           </div>
-          <div x-data="{ open: false }" className="w-full">
+          <div className="w-full">
             <button
               className="bg-white inline-flex w-full items-center justify-between p-3"
-              onClick={() => setOpen(prev => !prev)}
+              onClick={() => setOpenAccount(prev => !prev)}
             >
               <span className="text-black">ACCOUNT</span>
               <span className="text-black">Cart (0)</span>
             </button>
             <div
-              className="text-white bg-white"
-              x-show="open"
+              className={`${openAccount ? '' : 'hidden'} text-white bg-white`}
             // @click.outside="open = false"
             >
               <div
@@ -171,7 +175,7 @@ export const StoreNavigation = () => {
           </div>
 
           <ul
-            className={`${open ? "flex" : "hidden"} flex-col bg-black h-screen border-t border-white flex-1 w-full`}
+            className={`${openNav ? "flex" : "hidden"} flex-col bg-black h-screen border-t border-white flex-1 w-full`}
           >
             <nav role="navigation">
               <ul className="flex flex-col text-white uppercase divide-y border-b">

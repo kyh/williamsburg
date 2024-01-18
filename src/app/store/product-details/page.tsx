@@ -1,10 +1,12 @@
-import { BaseLayout } from "@/layouts/BaseLayout";
-import { Terms } from "@/components/infopages/Terms";
+import { ProductDetails } from "@/components/store/ProductDetails";
+import { Recommendations } from "@/components/store/Recommendations";
+import { StoreLayout } from "@/layouts/StoreLayout";
 
 export default function Page(){
   return (
-    <BaseLayout>
-      <Terms />
-    </BaseLayout>
+    <StoreLayout>
+      <ProductDetails />
+      <Recommendations />
+    </StoreLayout>
   )
 }

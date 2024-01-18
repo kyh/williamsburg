@@ -2,7 +2,10 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const fontSans = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -15,8 +18,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className="bg-white flex flex-col min-h-screen font-mono">{children}</body>
+    <html lang="en" className={["font-mono", fontSans.variable].join(" ")}>
+      <body className="bg-white flex flex-col min-h-screen">{children}</body>
     </html>
   )
 }

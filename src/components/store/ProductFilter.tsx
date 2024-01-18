@@ -3,9 +3,8 @@
 import { useState } from "react"
 
 export const ProductFilter = () => {
-  const [open, setOpen] = useState(true)
   const [selected, setSelected] = useState(0)
-  
+
   return (
     <div className="2xl:max-w-7xl 2xl:mx-auto order-last">
       <div
@@ -14,33 +13,33 @@ export const ProductFilter = () => {
           <ul
             className="list-none -space-y-1 divide-y divide-black"
             role="list"
-            onClick={() => setOpen(prev => !prev)}
-            >
+          >
             <li className="relative bg-white border-b border-black">
               <button
                 type="button"
                 className="w-full text-left p-3 border-b border-black"
                 onClick={() => setSelected(prev => prev !== 1 ? 1 : 0)}
-                >
+              >
                 <div
                   className="flex items-center justify-between text-black uppercase text-xs group">
                   <p>onm-12</p>
                   <svg
-                  className={`{inline w-4 h-4 ml-4 transition-transform duration-200 transform ${open ? "rotate-180" : "rotate-0"}}`}
+                    className={`{inline w-4 h-4 ml-4 transition-transform duration-200 transform ${selected === 1 ? "rotate-180" : "rotate-0"}}`}
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor">
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
-                      clip-rule="evenodd"></path>
+                      clipRule="evenodd"></path>
                   </svg>
                 </div>
               </button>
               <div
-                className="relative overflow-hidden transition-all duration-700 max-h-0"
-                x-ref="container1"
-                x-bind:style="selected == 1 ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''">
+                className={`${selected === 1 ? "max-h-full" : "max-h-0"} relative overflow-hidden`}
+              // x-ref="container1"
+              // x-bind:style="selected == 1 ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''"
+              >
                 <div className="p-3">
                   <div className="py-3 flex flex-col gap-3 uppercase">
                     <span>
@@ -61,26 +60,27 @@ export const ProductFilter = () => {
                 type="button"
                 className="w-full text-left p-3 border-b border-black"
                 onClick={() => setSelected(prev => prev !== 2 ? 2 : 0)}
-                >
+              >
                 <div
                   className="flex items-center justify-between text-black uppercase text-xs group">
                   <p>Product options</p>
                   <svg
-                    className={`{inline w-4 h-4 ml-4 transition-transform duration-200 transform ${open ? "rotate-180" : "rotate-0"}}`}
+                    className={`{inline w-4 h-4 ml-4 transition-transform duration-200 transform ${selected === 2 ? "rotate-180" : "rotate-0"}}`}
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor">
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
-                      clip-rule="evenodd"></path>
+                      clipRule="evenodd"></path>
                   </svg>
                 </div>
               </button>
               <div
-                className="relative overflow-hidden transition-all duration-700 max-h-0"
-                x-ref="container1"
-                x-bind:style="selected == 2 ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''">
+                className={`${selected === 2 ? "max-h-full" : "max-h-0"} relative overflow-hidden`}
+              // x-ref="container1"
+              // x-bind:style={selected == 2 ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''}
+              >
                 <div className="p-3">
                   <div className="py-3 flex flex-col gap-3 uppercase">
                     <span> Size</span>
@@ -97,8 +97,8 @@ export const ProductFilter = () => {
                         <label
                           htmlFor="filter-mobile-color-0"
                           className="ml-3 min-w-0 flex-1 text-xs uppercase">
-                            S
-                          </label>
+                          S
+                        </label>
                       </div>
                       <div className="flex items-center">
                         <input
@@ -111,8 +111,8 @@ export const ProductFilter = () => {
                         <label
                           htmlFor="filter-mobile-color-2"
                           className="ml-3 min-w-0 flex-1 text-xs uppercase">
-                            M
-                          </label>
+                          M
+                        </label>
                       </div>
                       <div className="flex items-center">
                         <input
@@ -186,15 +186,15 @@ export const ProductFilter = () => {
                           name="color[]"
                           value="orange"
                           type="checkbox"
-                          
+
                           className="h-3 w-3 rounded-full border-zinc-300 text-orange-600 focus:ring-orange-500"
                         />
                         <label
                           htmlFor="filter-mobile-color-2"
                           className="ml-3 min-w-0 flex-1 text-xs uppercase"
-                          >
-                            Orange
-                          </label>
+                        >
+                          Orange
+                        </label>
                       </div>
                     </span>
                   </div>
@@ -222,15 +222,15 @@ export const ProductFilter = () => {
               </button>
               <span>1</span>
               <button
-                ><svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="icon icon-tabler w-4 h-4 icon-tabler-plus"
-                  viewBox="0 0 24 24"
-                  strokeWidth="2"
-                  stroke="currentColor"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round">
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="icon icon-tabler w-4 h-4 icon-tabler-plus"
+                viewBox="0 0 24 24"
+                strokeWidth="2"
+                stroke="currentColor"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                   <path d="M12 5l0 14"></path>
                   <path d="M5 12l14 0"></path>

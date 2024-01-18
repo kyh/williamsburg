@@ -10,7 +10,6 @@ export const Navigation = () => {
       <div
         className="w-full bg-black md:max-w-sm text-xs z-50 fixed right-0 2xl:max-w-7xl 2xl:mx-auto">
         <nav
-          x-data="{ open: false }"
           className="relative flex flex-col w-full mx-auto items-center justify-between">
           <div className="inline-flex w-full items-center justify-between p-3 bg-black">
             <a
